@@ -18,10 +18,10 @@ public class Driver {
 			System.out.println("Or enter QUIT at any time to end the game.");
 			String input = scan.next();
 			
-	        if (input.toUpperCase().equals("QUIT")) {
-	            System.exit(0);
-	        
-	        }
+            if (input.equalsIgnoreCase("quit")) {
+                System.out.println("Exiting program...");
+                System.exit(0);
+            }
 	        
 		try {
 			int menuChoice = Integer.parseInt(input);
@@ -38,20 +38,22 @@ public class Driver {
 			System.out.println("Please enter a valid input");
 		}
 		}
-		//Where do i put the QUIT	
-			g.rules();
-			while(loop) {
-				g.setUp();
-				guess = scan.next();
-				while(!g.goodPlayerInput(guess)) {
-					System.out.println("Sorry, bad input. Please try again.");
-					guess = scan.next();
-					
-				}
-				g.checkWinOrLose();
-				if(!g.canPlayAgain()) {
-					loop = false;
-					startPlay = true;
+	
+		g.rules();
+		while(loop) {
+			g.setUp();
+			guess = scan.next();
+			while(!g.goodPlayerInput(guess)) {
+				System.out.println("Sorry, bad input. Please try again.");
+				guess = scan.next();	
+			            if (input.equalsIgnoreCase("quit")) {
+               			 	System.out.println("Exiting program...");
+                			System.exit(0);
+            			    }
+			}
+			g.checkWinOrLose();
+			if(!g.canPlayAgain()) {
+				loop = false;
 				}
 			}
 		}
