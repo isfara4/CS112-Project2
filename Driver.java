@@ -46,7 +46,7 @@ public class Driver {
 			while(!g.goodPlayerInput(guess)) {
 				System.out.println("Sorry, bad input. Please try again.");
 				guess = scan.next();	
-			            if (input.equalsIgnoreCase("quit")) {
+			            if (guess.equalsIgnoreCase("quit")) {
                			 	System.out.println("Exiting program...");
                 			System.exit(0);
             			    }
