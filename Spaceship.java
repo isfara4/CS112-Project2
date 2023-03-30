@@ -84,10 +84,12 @@ public class Spaceship extends Game{
 		        } else {
 		            hiddenWord[i] = "_";
 		        }
+		        System.out.println("");
 		    }
 		    System.out.println(String.join(" ", hiddenWord));
 
-	    System.out.println("\n Guess a letter: \n");
+
+	    System.out.println("\n Guess a letter:");
 		
 	}
 	
@@ -113,7 +115,7 @@ public class Spaceship extends Game{
 	}
 	
 	private boolean compareGuess() {
-		for(int i = 0; i < chosenWord.lenth(); i++){
+		for(int i = 0; i < chosenWord.length(); i++){
 			if(!guessedWord.contains(Character.toString(chosenWord.charAt(i)))){
 				return false;
 			}

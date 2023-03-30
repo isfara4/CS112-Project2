@@ -18,7 +18,7 @@ public class Driver {
 			System.out.println("Or enter QUIT at any time to end the game.");
 			String input = scan.next();
 			
-	        if (input.equals("QUIT")) {
+	        if (input.toUpperCase().equals("QUIT")) {
 	            System.exit(0);
 	        
 	        }
