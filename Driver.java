@@ -16,22 +16,20 @@ public class Driver {
 			System.out.println("Enter 1 to play Spaceship");
 			System.out.println("Enter 2 to play Cho-Han");
 			System.out.println("Or enter QUIT at any time to end the game.");
-			String input = scan.next();
-			
-            if (input.equalsIgnoreCase("quit")) {
-                System.out.println("Exiting program...");
-                System.exit(0);
-            }
 	        
 		try {
-			int menuChoice = Integer.parseInt(input);
-			if(menuChoice == 1){
+			String menuChoice = scan.next();
+			if(menuChoice.equals("1")){
 				g = new Spaceship();
-			}else if(menuChoice == 2){
+			}else if(menuChoice.equals("2")){
 				g = new ChoHan();
-			}else{
+			}else if(menuChoice.equalsIgnoreCase("QUIT")){
+				System.out.println("Exiting the program...");
+				System.exit(0);
+				 // some error handling regarding menuChoice
+			}else {
 				System.out.println("Please enter 1 or 2.");
-				continue; // some error handling regarding menuChoice
+				continue;
 			}
 			startPlay = false;
 		}catch(NumberFormatException e) {
@@ -43,13 +41,13 @@ public class Driver {
 		while(loop) {
 			g.setUp();
 			guess = scan.next();
+			if(guess.equalsIgnoreCase("quit")) {
+				System.out.println("Exiting the program...");
+				System.exit(0);	
+			}
 			while(!g.goodPlayerInput(guess)) {
 				System.out.println("Sorry, bad input. Please try again.");
 				guess = scan.next();	
-			            if (guess.equalsIgnoreCase("quit")) {
-               			 	System.out.println("Exiting program...");
-                			System.exit(0);
-            			    }
 			}
 			g.checkWinOrLose();
 			if(!g.canPlayAgain()) {
