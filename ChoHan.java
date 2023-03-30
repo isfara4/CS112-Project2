@@ -44,15 +44,17 @@ public class ChoHan extends Game {
 							+ "and asks for your bet.\n\n    CHO (even) or HAN (odd)");
 
 	}
-
+	
 	@Override
 	public boolean goodPlayerInput(String guess) {
 
 		if(guess.toUpperCase().equals("CHO") || guess.toUpperCase().equals("HAN")){
 			guess = evenOrOdd;
 			return true;
-		}	
-		return false;
+		}else if(guess.equalsIgnoreCase("quit")) {
+		return true;
+		}
+		return false;	// edit
 	}
 
 	@Override
