@@ -4,22 +4,21 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Random;
 public class Spaceship extends Game{
-
 	
 	String[] words = {"frog", "sage", "blue", "bone", "cone", "lend", "pint", "luck", "seed", "foam", "dusk", "cave", "harp", "ruby", "soak", "tusk", "mend", "jolt", "quit", "vain", "haze", "bunk", "jade", "bald"};
-	Random random = new Random();
-	ArrayList<String> missedLetters = new ArrayList<String>(); // holds users incorrect guesses
-	ArrayList<String> correctLetters = new ArrayList<String>(); // holds correct guesses
-	Scanner scan = new Scanner(System.in);
-	ArrayList<String> images = new ArrayList<String>(); //ASCII art
-	int index = 0;
-	String chosenWord = ""; //random answer word
-	String guessedLetter = ""; 
-	boolean won = false; //set to true if win 
-	String guessedWord = ""; // all correct letters
+	private ArrayList<String> missedLetters = new ArrayList<String>(); // holds users incorrect guesses
+	private ArrayList<String> correctLetters = new ArrayList<String>(); // holds correct guesses
+	private ArrayList<String> images = new ArrayList<String>(); //ASCII art
+	private int index = 0;
+	private String chosenWord = ""; //random answer word
+	private String guessedLetter = ""; 
+	private boolean won = false; //set to true if win 
+	private String guessedWord = ""; // all correct letters
 	
 	public Spaceship() {
 		super();
+		Random random = new Random();
+		Scanner scan = new Scanner(System.in);
 		int randomIndex = random.nextInt(words.length); //chooses random word
 		chosenWord = words[randomIndex];
 		
