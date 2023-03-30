@@ -105,12 +105,13 @@ public class Spaceship extends Game{
 			return false;
 		}else if (correctLetters.contains(guess)) {
 			return false; 
-		}else if(!guess.matches("[a-zA-Z]")) {
+		}else if(!guess.matches("[a-zA-Z")) {
 			return false;
-		}else {
-			guessedLetter = guess;
+		}else if (guess.equalsIgnoreCase("quit")){
 			return true; 
 		}
+			guess = guessedLetter;
+			return true; 
 	
 	}
 	
