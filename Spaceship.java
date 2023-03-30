@@ -74,16 +74,18 @@ public class Spaceship extends Game{
 	        for (int i = 0; i < missedLetters.size(); i++ ) {
 	            System.out.print(missedLetters.get(i) + " ");
 	        }
+	        System.out.println("");
 	    }
 
-	    System.out.println("");
-	    for(int i = 0; i < chosenWord.length(); i++) {
-	        if(!correctLetters.isEmpty() && correctLetters.get(i).contains(Character.toString(chosenWord.charAt(i)))) {
-	            System.out.print(Character.toString(chosenWord.charAt(i)));
-	        }else {
-	            System.out.print("_ ");
-	        }
-	    }
+		    String[] hiddenWord = new String[chosenWord.length()];
+		    for (int i = 0; i < chosenWord.length(); i++) {
+		        if (correctLetters.contains(Character.toString(chosenWord.charAt(i)))) {
+		            hiddenWord[i] = Character.toString(chosenWord.charAt(i));
+		        } else {
+		            hiddenWord[i] = "_";
+		        }
+		    }
+		    System.out.println(String.join(" ", hiddenWord));
 
 	    System.out.println("\n Guess a letter: \n");
 		
@@ -111,18 +113,12 @@ public class Spaceship extends Game{
 	}
 	
 	private boolean compareGuess() {
-		guessedWord = "____";
-		for (int i = 0; i < chosenWord.length(); i++) {
-			 char userChar = chosenWord.charAt(i);
-			    for (int j = 0; j < chosenWord.length(); j++) {
-			    	if (chosenWord.charAt(j) == userChar) {
-			    	    guessedWord = guessedWord.substring(0, j) + userChar + guessedWord.substring(j + 1);
-
-			        }
-			    }
+		for(int i = 0; i < chosenWord.lenth(); i++){
+			if(!guessedWord.contains(Character.toString(chosenWord.charAt(i)))){
+				return false;
 			}
-		return guessedWord.equals(chosenWord);
-
+		}
+		return true;
 		}
 
 
@@ -143,7 +139,6 @@ public class Spaceship extends Game{
 		}else {
 			missedLetters.add(guessedLetter);
 			index++;
-//			System.out.println(images.get(index));
 			if(index == images.size()) {
 				System.out.println("The word was " + chosenWord);
 			}else {
@@ -153,12 +148,13 @@ public class Spaceship extends Game{
 	}
 	
 	@Override
-    public boolean canPlayAgain() {
-
-		if (won) {
-			return false; 
-		}else {
+	public boolean canPlayAgain(){
+		if(won) {
+			return false;
+		}else if(index < images.size()-1) {
 			return true;
+		}else {
+			return false;
 		}
 	}
 }
