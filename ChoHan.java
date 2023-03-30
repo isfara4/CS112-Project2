@@ -5,13 +5,13 @@ import java.util.Random;
 
 public class ChoHan extends Game {
 
-	Random random = new Random();
-	int money = 2;
-	int sum = 0; 
-	int dice1 = 0;
-	int dice2 = 0;
-	String answer = "";
-	String evenOrOdd = "";
+
+	private int money = 2;
+	private int sum = 0; 
+	private int dice1 = 0;
+	private int dice2 = 0;
+	private String answer = "";
+	private String evenOrOdd = "";
 
 	
 	
@@ -36,6 +36,7 @@ public class ChoHan extends Game {
 
 	@Override
 	public void setUp() {
+		Random random = new Random();
 		dice1 = random.nextInt(5) + 1;
 		dice2 = random.nextInt(5) + 1;
 		sum = dice1 + dice2;
